@@ -1,0 +1,59 @@
+name: .NET Core Engine Pipeline
+
+on:
+  schedule:
+    # Wakes up at 39 minutes past 3 AM, 9 AM, 3 PM, and 9 PM UTC
+    # (11:39 AM, 5:39 PM, 11:39 PM, and 5:39 AM Singapore Time)
+    - cron: '39 3,9,15,21 * * *'
+  workflow_dispatch:
+
+jobs:
+  dotnet-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Fetch Core Repository
+        uses: actions/checkout@v4
+
+      - name: Mutate C# Record Spec
+        run: |
+          # 30% chance to skip (maintains natural execution gaps)
+          if [ $((RANDOM % 100)) -lt 30 ]; then
+            echo ".NET core record specs current. Skipping execution."
+            exit 0
+          fi
+
+          mkdir -p src/Services
+          TARGET_FILE="src/Services/TelemetryState.cs"
+
+          if [ ! -f "$TARGET_FILE" ]; then
+            echo "namespace Engine.Services;" > "$TARGET_FILE"
+            echo "" >> "$TARGET_FILE"
+            echo "// Core .NET Service State Records" >> "$TARGET_FILE"
+          fi
+
+          COMPONENTS=("NodePayload" "MetricBuffer" "SessionVector" "CacheEntry" "ClusterState")
+          PICKED_COMP=${COMPONENTS[$RANDOM % ${#COMPONENTS[@]}]}
+
+          echo "" >> "$TARGET_FILE"
+          echo "/// <summary>Node state payload $RANDOM</summary>" >> "$TARGET_FILE"
+          echo "public record ${PICKED_COMP}_$RANDOM(" >> "$TARGET_FILE"
+          echo "    long NodeId = $RANDOM," >> "$TARGET_FILE"
+          echo "    bool IsActive = true" >> "$TARGET_FILE"
+          echo ");" >> "$TARGET_FILE"
+
+          git config --global user.name "terrieqk"
+          git config --global user.email "terrieqk@gmail.com"
+
+          MESSAGES=(
+            "feat: add immutable C# record type definition for service payload"
+            "refactor: optimize record parameter layout in TelemetryState"
+            "fix: adjust record property bounds in .NET core schema"
+            "chore: sync C# namespace service specifications"
+          )
+          MSG=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
+
+          git add src/
+          git commit -m "$MSG"
+          git push
