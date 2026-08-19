@@ -229,3 +229,9 @@ public record ClusterState_23943(
     long NodeId = 3786,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 2902</summary>
+public record NodePayload_1754(
+    long NodeId = 14123,
+    bool IsActive = true
+);
