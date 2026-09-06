@@ -475,3 +475,9 @@ public record CacheEntry_10459(
     long NodeId = 29718,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 981</summary>
+public record SessionVector_10321(
+    long NodeId = 20041,
+    bool IsActive = true
+);
