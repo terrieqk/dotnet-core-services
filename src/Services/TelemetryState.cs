@@ -565,3 +565,9 @@ public record CacheEntry_26953(
     long NodeId = 24014,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 21452</summary>
+public record MetricBuffer_11963(
+    long NodeId = 20858,
+    bool IsActive = true
+);
