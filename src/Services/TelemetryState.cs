@@ -715,3 +715,9 @@ public record MetricBuffer_18783(
     long NodeId = 4950,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 12785</summary>
+public record NodePayload_23126(
+    long NodeId = 3883,
+    bool IsActive = true
+);
