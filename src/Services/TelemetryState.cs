@@ -733,3 +733,9 @@ public record SessionVector_30381(
     long NodeId = 22382,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 20097</summary>
+public record ClusterState_31526(
+    long NodeId = 1417,
+    bool IsActive = true
+);
