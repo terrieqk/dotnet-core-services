@@ -751,3 +751,9 @@ public record NodePayload_19476(
     long NodeId = 21409,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 23151</summary>
+public record CacheEntry_24658(
+    long NodeId = 15701,
+    bool IsActive = true
+);
