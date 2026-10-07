@@ -961,3 +961,9 @@ public record NodePayload_25068(
     long NodeId = 3992,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 8863</summary>
+public record NodePayload_7714(
+    long NodeId = 16391,
+    bool IsActive = true
+);
