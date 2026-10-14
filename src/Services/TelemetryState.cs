@@ -1033,3 +1033,9 @@ public record MetricBuffer_26609(
     long NodeId = 752,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 4209</summary>
+public record SessionVector_27863(
+    long NodeId = 27429,
+    bool IsActive = true
+);
