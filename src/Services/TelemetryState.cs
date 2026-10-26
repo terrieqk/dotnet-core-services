@@ -1243,3 +1243,9 @@ public record ClusterState_30407(
     long NodeId = 18989,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 18542</summary>
+public record CacheEntry_15336(
+    long NodeId = 13053,
+    bool IsActive = true
+);
