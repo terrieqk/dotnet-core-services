@@ -1369,3 +1369,9 @@ public record NodePayload_18400(
     long NodeId = 2453,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 16931</summary>
+public record SessionVector_25901(
+    long NodeId = 32190,
+    bool IsActive = true
+);
