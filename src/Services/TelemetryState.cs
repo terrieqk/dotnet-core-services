@@ -1441,3 +1441,9 @@ public record ClusterState_32533(
     long NodeId = 14408,
     bool IsActive = true
 );
+
+/// <summary>Node state payload 13366</summary>
+public record MetricBuffer_25392(
+    long NodeId = 4065,
+    bool IsActive = true
+);
